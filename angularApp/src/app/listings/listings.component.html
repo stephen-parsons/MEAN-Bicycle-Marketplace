@@ -1,0 +1,144 @@
+<div>
+	<app-header></app-header>
+	Hi {{user.first_name}}!
+	<div>
+		<form (submit)="onSubmit()">
+			<h3>Create Listing</h3>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Title:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="title"
+					required 
+					[(ngModel)]="listing.title"
+					#title="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Text:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="text"
+					required 
+					[(ngModel)]="listing.text"
+					#text="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Price:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="price"
+					required 
+					[(ngModel)]="listing.price"
+					#price="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Location:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="location"
+					required 
+					[(ngModel)]="listing.location"
+					#location="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Img Url:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="imgUrl"
+					required 
+					[(ngModel)]="listing.imgUrl"
+					#imgUrl="ngModel"
+				>
+			  </div>
+			</div>
+			<button type="submit" class="btn btn-primary">Create</button>
+
+		</form>
+	</div>
+	<br>
+	<br>
+	<div *ngIf="listings != []">
+		<h3>Edit/Delete Listings: </h3>
+		<div *ngFor="let listing of listings" class="bike">
+			<form (submit)="onSubmitEdit(listing)">
+			<p><strong>Edit Listing</strong></p>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Title:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="title"
+					required 
+					[(ngModel)]="listing.title"
+					#title="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Text:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="text"
+					required 
+					[(ngModel)]="listing.text"
+					#text="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Price:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="price"
+					required 
+					[(ngModel)]="listing.price"
+					#price="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Location:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="location"
+					required 
+					[(ngModel)]="listing.location"
+					#location="ngModel"
+				>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Img Url:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="imgUrl"
+					required 
+					[(ngModel)]="listing.imgUrl"
+					#imgUrl="ngModel"
+				>
+			  </div>
+			</div>
+			<img src="{{listing.imgUrl}}" alt="listing_image"><br>
+			<button type="submit" class="btn btn-primary">Edit</button>
+		</form>
+		</div>
+	</div>
+</div>
+

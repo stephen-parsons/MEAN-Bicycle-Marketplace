@@ -1,0 +1,52 @@
+<div>
+	<app-header></app-header>
+	Hi {{user.first_name}}!
+	<br>
+	<br>
+	<div *ngIf="listings != []">
+		<h3>All Listings: </h3>
+		<br>
+		<form (submit)="onSubmitSearch()">
+			<!-- <p>Search: <input type="text" name="search" [(ngModel)]="search"></p> -->
+			<div class="input-group col-md-8">
+			      <input class="form-control rounded-0 py-2" type="search" name="search" placeholder="Search all listings" id="search" [(ngModel)]="search">
+			      <span class="input-group-btn">
+			        <button class="btn btn-outline-secondary" type="submit">
+			            <i class="fa fa-search">Search</i>
+			        </button>
+			      </span>
+			</div>
+			<!-- <input type="submit" value="Search"> -->
+		<br>	
+		</form>
+		<div *ngFor="let listing of listings" class="bike">
+			<img src="{{listing.imgUrl}}" alt="listing image">
+			<h5>{{listing.title}}</h5>
+			<p>{{listing.text}}</p>
+			<h3>${{listing.price}}</h3>
+			<p>{{listing.location}}</p>
+			<div *ngIf="listing._user == user._id; else contactForm">
+				<form (submit)="onSubmitDelete(listing._id)">
+					<input style="color: red" type="submit" value="DELETE">
+				</form>
+			</div>
+			<ng-template #contactForm>
+			    <form (submit)="onSubmitContact(listing._user, listing._id)">
+			    	<input type="submit" value="CONTACT">
+			    </form>
+			    <br>
+			    <div *ngIf="userContact != null && userContact.listing == listing._id" style="font-size: 12px; color: red">
+			    	<p>Name: {{userContact.first_name}}</p>
+			    	<p>Email: {{userContact.email}}</p>
+			    </div>
+<!-- 				<script>
+				    angular.module("browse", []).controller('MyController', ['$scope',function($scope) {
+					   		$scope.clicked = function(){
+					        	alert("Clicked");
+					    	}
+				</script> -->
+			</ng-template>
+		</div>
+	</div>		
+</div>
+

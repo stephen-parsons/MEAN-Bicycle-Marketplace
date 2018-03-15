@@ -1,0 +1,164 @@
+<div>
+	<!-- BOTD -->
+	<div>
+		<h3>Bike of the Day!</h3>
+		<img src="{{listing.imgUrl}}" alt="listing image">
+		<h5>{{listing.title}}</h5>
+		<p>{{listing.text}}</p>
+		<h3>${{listing.price}}</h3>
+		<p>{{listing.location}}</p>
+	</div>
+	<!-- LOGIN -->
+	<h1>Login:</h1>
+<!-- 	{{logUser | json}} -->
+
+	<div>
+		<form id="login" (submit)="onSubmitLogin()">
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Email:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="email"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="logUser.email"
+					#logEmail="ngModel"
+				>
+				<div *ngIf="logEmail.errors">
+					<p *ngIf="logEmail.errors.required" style="font-size:12px; color: red">Please enter an email</p>
+				</div>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Password:</label>
+			  <div class="col-10">
+			    <input 
+					type="password" 
+					name="password"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="logUser.password"
+					#logPassword="ngModel"
+				>
+				<div *ngIf="logPassword.errors">
+					<p *ngIf="logPassword.errors.required" style="font-size:12px; color: red">Please enter a password</p>
+				</div>
+			  </div>
+			</div>
+			<button type="submit" class="btn btn-primary">Login</button>
+		</form>
+	</div>
+	<!-- REGISTRATION -->
+	<h1>Register:</h1>
+	<div>
+
+<!-- 		{{regUser | json}} -->
+
+		<form id="registration" (submit)="onSubmitRegistration()">
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">First Name:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="first_name"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="regUser.first_name"
+					#first_name="ngModel"
+				>
+				<div *ngIf="first_name.errors">
+					<p *ngIf="first_name.errors.required" style="font-size:12px; color: red">Please enter a first name</p>
+					<p *ngIf="first_name.errors.minlength" style="font-size:12px; color: red">First name must be at least 2 characters long</p>
+				</div>
+				<p *ngIf="!first_name.errors" style="font-size:12px; color: blue">Good first name</p>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Last Name:</label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="last_name"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="regUser.last_name"
+					#last_name="ngModel"
+				>
+				<div *ngIf="last_name.errors">
+					<p *ngIf="last_name.errors.required" style="font-size:12px; color: red">Please enter a last name</p>
+					<p *ngIf="last_name.errors.minlength" style="font-size:12px; color: red">Last name must be at least 2 characters long</p>
+				</div>
+				<p *ngIf="!last_name.errors" style="font-size:12px; color: blue">Good last name</p>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Email: </label>
+			  <div class="col-10">
+			    <input 
+					type="text" 
+					name="email"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="regUser.email"
+					#email="ngModel"
+				>
+				<div *ngIf="email.errors">
+					<p *ngIf="email.errors.required" style="font-size:12px; color: red">Please enter an email</p>
+					<p *ngIf="email.errors.minlength" style="font-size:12px; color: red">Email must be at least 2 characters long</p>
+				</div>
+				<p *ngIf="!email.errors" style="font-size:12px; color: blue">Good email</p>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Password:</label>
+			  <div class="col-10">
+			    <input 
+					type="password" 
+					name="password"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="regUser.password"
+					#password="ngModel"
+				>
+				<div *ngIf="password.errors">
+					<p *ngIf="password.errors.required" style="font-size:12px; color: red">Please enter a password</p>
+					<p *ngIf="password.errors.minlength" style="font-size:12px; color: red">Password must be at least 2 characters long</p>
+				</div>
+				<p *ngIf="!password.errors" style="font-size:12px; color: blue">Good password</p>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-text-input" class="col-2 col-form-label">Confirm password:</label>
+			  <div class="col-10">
+			    <input 
+					type="password" 
+					name="confirm_pasword"
+					required 
+					minlength="2" 
+					maxlength="24"
+					[(ngModel)]="regUser.confirm_pasword"
+					#confirm_pasword="ngModel"
+				>
+				<div *ngIf="confirm_pasword.errors; else confirm">
+					<p *ngIf="confirm_pasword.errors.required" style="font-size:12px; color: red">Please confirm pasword</p>
+					<p *ngIf="confirm_pasword.errors.minlength" style="font-size:12px; color: red">Confirmed pasword must be at least 2 characters long</p>
+				</div>
+
+				<ng-template #confirm>
+				    <p *ngIf="regUser.confirm_pasword !== regUser.password" style="font-size:12px; color: red">Passwords must match</p>
+				</ng-template>
+				
+				<p *ngIf="regUser.confirm_pasword === regUser.password" style="font-size:12px; color: blue">Passwords match</p>
+			  </div>
+			</div>
+			<button type="submit" class="btn btn-primary">Register</button>
+		</form>
+	</div>
+</div>
